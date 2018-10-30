@@ -30,4 +30,4 @@ Requires numpy, scipy, networkx
     
     >>> print(x * p)
     
-    >>> print(makespan)https://github.com/nimr0d/approx_algs.git
+    >>> print(makespan)
