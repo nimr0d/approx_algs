@@ -13,17 +13,17 @@ def constraints(p, t):
   b_eq = np.zeros(c)
   b_ub = np.ones(m) * t
   return A_eq, b_eq, b_ub
+
 # Solve relaxed LP for a given t
 def upm_t(p, t, c):
   m, n = p.shape
   A_eq, b_eq, A_ub = c
   A_eq_, b_eq_, b_ub = constraints(p, t)
-
   A_eq = np.concatenate((A_eq, A_eq_))
   b_eq = np.concatenate((b_eq, b_eq_))
   obj = np.zeros(m * n)
-
   return linprog(obj, A_ub=A_ub, b_ub=b_ub, A_eq=A_eq, b_eq=b_eq)
+
 # Deterministic rounding of LP
 def rnd(x):
   m, n = x.shape
@@ -45,6 +45,7 @@ def rnd(x):
       if k >= m:
         x_[v[0], k - m] = 1
   return x_
+
 # Unrelated parallel machines solver
 def upm(p):
   """
