@@ -69,7 +69,7 @@ def upm(p):
     res = upm_t(p, d, c)
     if res.success:
       u = d
-      best_x = rnd(res.x.reshape((m, n)))
+      best_x = res.x.reshape((m, n))
     else:
       l = d + 1
-  return best_x, (p * best_x).sum(axis=1).max()
+  return rnd(best_x), (p * best_x).sum(axis=1).max()
